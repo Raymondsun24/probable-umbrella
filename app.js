@@ -18,6 +18,6 @@ app.get('/:page', (req,res)=>{
 // app.post('/api', (req,res)=>{
 //     console.log(req.body);
 // });
-const PORT = process.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT);
 
