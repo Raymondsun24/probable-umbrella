@@ -15,9 +15,9 @@ app.use(express.static('static'));
 // app.get('/', (req,res)=>{
 //     res.sendFile(path.join(__dirname,'static', 'index.html'));
 // });
-// app.get('/:page', (req,res)=>{
-//     res.sendFile(path.join(__dirname,'static', req.params.page));
-// });
+app.get('/:page', (req,res)=>{
+    res.sendFile(path.join(__dirname,'static', req.params.page));
+});
 
 // app.post('/api', (req,res)=>{
 //     console.log(req.body);
