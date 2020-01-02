@@ -22,5 +22,6 @@ app.use(express.static('static'));
 // app.post('/api', (req,res)=>{
 //     console.log(req.body);
 // });
-app.listen(3000);
+const PORT = process.PORT || 3000;
+app.listen(PORT);
 
