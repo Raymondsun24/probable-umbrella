@@ -139,10 +139,11 @@ function play(){
 
         console.log(coords);
         for(var i = 0; i < 4; i++){
-            const xcoord = coords[i][0];
-            const ycoord = coords[i][1];
+            const xcoord = coords[i][1];
+            const ycoord = coords[i][0];
             if( xcoord < 0 || ycoord < 0 || xcoord >= x || ycoord >= y){
-                console.log('Cannot be rotated');
+                console.log(xcoord);
+                console.log('Cannot be rotated1');
                 return;
             }
             if( grid[xcoord*x+ycoord] == 255 ){
@@ -153,7 +154,7 @@ function play(){
                     }
                 }
                 if(flag){
-                    console.log('Cannot be rotated');
+                    console.log('Cannot be rotated2');
                     return;
                 }
             }
