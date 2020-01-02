@@ -1,12 +1,8 @@
 // Creating a http server using the http module
 const express = require('express');
 const path = require('path');
-const DataStore = require('nedb');
 
-app = express();
-const database = new DataStore('database.db');
-database.loadDatabase();
-database.insert({LastName: 'Raymond', FirstName: 'Sun'});
+const app = express();
 app.use(express.static('static'));
 
 // app.use(express.json({limit: '1mb'}));
