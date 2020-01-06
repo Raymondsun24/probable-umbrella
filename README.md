@@ -1,5 +1,4 @@
 # probable-umbrella
 Raymond's website
 
-Deployed on heroku, check it out on:
-(probabe-umbrella.herokuapp.com)
+Deployed on heroku: [Check it out here!](http://probabe-umbrella.herokuapp.com)
