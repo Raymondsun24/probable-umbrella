@@ -9,6 +9,22 @@ function setup(){
     createCanvas(width, height);
 }
 
+document.getElementById("myBtn").addEventListener("click", async ()=>{
+    var nameValue = document.getElementById("name").value;
+    console.log(nameValue);
+    //var highScore = await getScore();
+    const data = {nameValue};
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+    console.log(options);
+    fetch('/api', options);
+});
+
 for(var i = 0; i < (height/blockSize)*(width/blockSize); i++){
     grid[i] = 102;
 }
@@ -60,10 +76,10 @@ function play(){
             this.block[1] = [1,5];
             this.block[2] = [1,6];
             this.block[3] = [1,7];
-            this.meta[0] = [[0,-2],[0,1],[1,-1],[1,-1]];
+            this.meta[0] = [[0,-2],[0,-2],[1,-1],[1,0]];
             this.meta[1] = [[0,0],[-1,1],[-2,2],[-1,-1]];
-            this.meta[2] = [[0,0],[0,0],[1,-1],[1,1]];
-            this.meta[3] = [[0,2],[1,-1],[0,0],[-1,1]];
+            this.meta[2] = [[0,0],[0,0],[1,-1],[1,-1]];
+            this.meta[3] = [[0,2],[1,1],[0,0],[-1,2]];
             break;
         case 2:
             this.block = [];
@@ -253,11 +269,11 @@ document.addEventListener('keydown', function(event) {
         active.moveLeft();
         console.log('Left was pressed');
     }
-    else if(event.keyCode == 39) {
+    if(event.keyCode == 39) {
         active.moveRight();
         console.log('Right was pressed');
     }
-    else if(event.keyCode = 82){
+    if(event.keyCode == 38){
         active.rotate();
         console.log('Rotate pressed');
     }
