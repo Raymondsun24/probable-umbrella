@@ -47,6 +47,7 @@ app.get('/:page', (req,res)=>{
 
 app.post('/api',(req,res)=>{
     console.log(req.body);
+    firebase.database().ref('users/').set(req.body);
 });
 // app.post('/api', (req,res)=>{
 //     console.log(req.body);
