@@ -24,8 +24,8 @@ var firebaseConfig = {
     measurementId: "G-4267PR5636"
   };
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 //   firebase.database().ref('users/').set({
 //     username: 'name',
 //     email: 'email',
@@ -41,8 +41,9 @@ app.use('/public', express.static(path.join(__dirname,'static')));
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname,'static', 'index.html'));
 });
-app.get('/:page', (req,res)=>{
-    res.sendFile(path.join(__dirname,'static', req.params.page));
+app.get('/:dir/:page', (req,res)=>{
+    console.log(req.query)
+    res.sendFile(path.join(__dirname,'static', req.params.dir, req.params.page));
 });
 
 app.post('/api',(req,res)=>{
@@ -54,4 +55,3 @@ app.post('/api',(req,res)=>{
 // });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);
-
