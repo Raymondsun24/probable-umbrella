@@ -46,6 +46,10 @@ app.get('/:dir/:page', (req,res)=>{
     res.sendFile(path.join(__dirname,'static', req.params.dir, req.params.page));
 });
 
+app.get('/index.html', (req,res)=>{
+    res.sendFile(path.join(__dirname,'static', 'index.html'));
+});
+
 app.post('/api',(req,res)=>{
     console.log(req.body);
     firebase.database().ref('users/').set(req.body);
