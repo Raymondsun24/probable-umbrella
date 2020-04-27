@@ -5,6 +5,7 @@ const blockSize = 40;
 const x = width/blockSize;
 const y = height/blockSize;
 var grid = [];
+
 function setup(){
     createCanvas(width, height);
 }

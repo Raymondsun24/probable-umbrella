@@ -1,4 +1,3 @@
-
 // Creating a http server using the http module
 const express = require('express');
 const path = require('path');
