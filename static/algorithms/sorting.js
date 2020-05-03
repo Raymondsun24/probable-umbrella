@@ -1,6 +1,6 @@
 const WIDTH = 800
 const HEIGHT = 800
-const k = 10
+const k = 1000
 var date = new Date();
 
 function setup(){
@@ -16,9 +16,33 @@ function getData(){
 }
 
 var data = getData();
-console.log(data);
+var date = new Date();
+
+function swap(index1, index2){
+    if(index1 == index2) return;
+    var temp = data[index2];
+    data[index2] = data[index1];
+    data[index1] = temp;
+}
+
+async function selectionSort(){
+    for(var i = 0; i < k; i++){
+        await new Promise(r => setTimeout(r,1));
+        console.log(i);
+        var minIndex = i;
+        var min = data[i];
+        for(var j = i; j < k; j++){
+            if(data[j] < min){
+                min = data[j];
+                minIndex = j;
+            }
+        }
+        swap(minIndex, i);
+    }
+}
 
 function draw(){
+    clear();
     line(0, 0, 0, HEIGHT);
     line(0, 0, WIDTH, 0);
     line(0, HEIGHT, WIDTH, HEIGHT);
@@ -29,5 +53,6 @@ function draw(){
     }
 }
 
-var a = selectionSort();
+console.log(data);
+selectionSort();
 console.log(data);
