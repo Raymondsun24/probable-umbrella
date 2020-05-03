@@ -1,6 +1,7 @@
 const WIDTH = 800
 const HEIGHT = 800
 const k = 10
+var date = new Date();
 
 function setup(){
     createCanvas(WIDTH, HEIGHT);
@@ -17,37 +18,6 @@ function getData(){
 var data = getData();
 console.log(data);
 
-
-function swap(index1, index2){
-    if(index1 == index2) return;
-    var temp = data[index2];
-    console.log(data[index1], data[index2]);
-    data[index2] = data[index1];
-    data[index1] = temp;
-    console.log(data[index1], data[index2]);
-    console.log(data);
-}
-
-async function selectionSort(){
-    for(var i = 0; i < k; i++){
-        var a = await setTimeout(ss, 200, i);
-        console.log(i);
-    }
-}
-
-function ss(i){
-    console.log(i);
-    var minIndex = i;
-    var min = data[i];
-    for(var j = i; j < k; j++){
-        if(data[j] < data[i]){
-            minIndex = j;
-            min = data[j];
-        }
-    }
-    swap(i, minIndex);
-}
-
 function draw(){
     line(0, 0, 0, HEIGHT);
     line(0, 0, WIDTH, 0);
@@ -60,5 +30,4 @@ function draw(){
 }
 
 var a = selectionSort();
-console.log('a');
 console.log(data);
