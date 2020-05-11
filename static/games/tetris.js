@@ -1,13 +1,16 @@
 var gamePieces = ['L1', 'L2','Square','Z1','Z2', 'T', 'I'];
-const width = 480;
-const height = 800;
+const width = 360;
+const height = 600;
 const blockSize = 40;
 const x = width/blockSize;
 const y = height/blockSize;
 var grid = [];
 
 function setup(){
-    createCanvas(width, height);
+    var cnv = createCanvas(width, height);
+    var x = (windowWidth - width) / 2;
+    var y = (windowHeight - height) / 2 + 150;
+    cnv.position(x, y);
 }
 
 document.getElementById("myBtn").addEventListener("click", async ()=>{
@@ -245,6 +248,7 @@ function play(){
                 }
                 checkGrid();
                 active = new play();
+                score += 1;
                 setTimeout(()=>{active.moveDown()}, 500);
                 return;
             }

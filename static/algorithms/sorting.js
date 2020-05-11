@@ -2,6 +2,7 @@ const WIDTH = 800
 const HEIGHT = 800
 const k = 1000
 var date = new Date();
+var score = 0
 
 function setup(){
     createCanvas(WIDTH, HEIGHT);
