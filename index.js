@@ -41,6 +41,9 @@ app.use('/public', express.static(path.join(__dirname,'static')));
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname,'static', 'index.html'));
 });
+app.get('/styles.css', (req,res)=>{
+    res.sendFile(path.join(__dirname,'static', 'styles.css'));
+});
 app.get('/:dir/:page', (req,res)=>{
     console.log(req.query)
     res.sendFile(path.join(__dirname,'static', req.params.dir, req.params.page));
@@ -50,6 +53,9 @@ app.get('/index.html', (req,res)=>{
     res.sendFile(path.join(__dirname,'static', 'index.html'));
 });
 
+app.get('/about.html', (req, res)=>{
+    res.sendFile(path.join(__dirname,'static', 'about.html'));
+})
 app.post('/api',(req,res)=>{
     console.log(req.body);
     firebase.database().ref('users/').set(req.body);

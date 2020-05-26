@@ -3,6 +3,7 @@
         <title>Tetris</title>
     </head>
     <h1 class="header">Tetris</h1>
+    <link rel="stylesheet" href="../styles.css">
     <ul>
         <li><a class="active"href="/index.html">Home</a></li>
         <li><a href="/games/games.html">Games</a></li>
@@ -15,6 +16,7 @@
         <input type="text" name="name", id="name">
         <button type="button" id="myBtn">Submit</button>
     </form>
+    <!-- <p id="score"> Your score is </p> -->
     <script src="p5.js"></script>
     <script src="tetris.js"></script>  
     </body>
@@ -25,40 +27,6 @@
       
         /* This centers our sketch horizontally. */
         justify-content: center;
-    }
-    .header {
-        padding: 60px;
-        text-align: center;
-        background: #336699;
-        color: black;
-        font-size: 30px;
-        }
-        ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #ffffff;
-        }
-
-        li {
-        float: left;
-        }
-
-        li a {
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        }
-
-        /* Change the link color to #111 (black) on hover */
-        li a:hover {
-        background-color: yellow;
-        }
-        .active {
-        background-color: #4CAF50;
     }
     </style>
 

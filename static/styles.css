@@ -1,0 +1,40 @@
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #ffffff;
+}
+
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: black;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+background-color: yellow;
+}
+
+.active {
+background-color: #4CAF50;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #336699;
+    color: black;
+    font-size: 30px;
+}
+
+
+

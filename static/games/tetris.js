@@ -1,7 +1,7 @@
 var gamePieces = ['L1', 'L2','Square','Z1','Z2', 'T', 'I'];
 const width = 360;
 const height = 600;
-const blockSize = 40;
+const blockSize = 30;
 const x = width/blockSize;
 const y = height/blockSize;
 var grid = [];
@@ -59,7 +59,7 @@ function checkGrid(){
 }
 
 function play(){
-    this.type = Math.floor(Math.random() * 7);
+    this.type = Math.floor(Math.random()*7);
     this.meta = [];
     this.metaNum = 0;
     switch(this.type){
@@ -80,10 +80,10 @@ function play(){
             this.block[1] = [1,5];
             this.block[2] = [1,6];
             this.block[3] = [1,7];
-            this.meta[0] = [[0,-2],[0,-2],[1,-1],[1,0]];
+            this.meta[0] = [[0,-2],[0,0],[1,-1],[1,-1]];
             this.meta[1] = [[0,0],[-1,1],[-2,2],[-1,-1]];
-            this.meta[2] = [[0,0],[0,0],[1,-1],[1,-1]];
-            this.meta[3] = [[0,2],[1,1],[0,0],[-1,2]];
+            this.meta[2] = [[0,0],[0,0],[1,-1],[1,1]];
+            this.meta[3] = [[0,2],[1,-1],[0,0],[-1,1]];
             break;
         case 2:
             this.block = [];
@@ -146,8 +146,6 @@ function play(){
     }
 
     this.rotate = ()=>{
-
-
         const type = this.metaNum;
         const coords = new Array();
         for(var i = 0; i < 4; i++){
@@ -248,7 +246,7 @@ function play(){
                 }
                 checkGrid();
                 active = new play();
-                score += 1;
+                //score += 1;
                 setTimeout(()=>{active.moveDown()}, 500);
                 return;
             }
