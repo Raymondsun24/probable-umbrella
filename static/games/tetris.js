@@ -5,6 +5,8 @@ const blockSize = 30;
 const x = width/blockSize;
 const y = height/blockSize;
 var grid = [];
+var score = 0;
+var gameOver = false;
 
 function setup(){
     var cnv = createCanvas(width, height);
@@ -13,11 +15,16 @@ function setup(){
     cnv.position(x, y);
 }
 
+function updateScore(){
+    var x = document.getElementById("score");
+    x.innerHTML = score;
+}
+
 document.getElementById("myBtn").addEventListener("click", async ()=>{
     var nameValue = document.getElementById("name").value;
     console.log(nameValue);
     //var highScore = await getScore();
-    const data = {nameValue};
+    const data = {name: nameValue, score: score};
     const options = {
         method: 'POST',
         headers: {
@@ -55,6 +62,11 @@ function checkGrid(){
         }
         if(flag) continue;
         shiftDown(i);
+    }
+    for(let j = 0; j < x; j++){
+        if(grid[j] == 255){
+            gameOver=true;
+        }
     }
 }
 
@@ -245,10 +257,13 @@ function play(){
                     continue;
                 }
                 checkGrid();
-                active = new play();
-                //score += 1;
-                setTimeout(()=>{active.moveDown()}, 500);
-                return;
+                if(! gameOver){
+                    active = new play();
+                    score += 1;
+                    updateScore();
+                    setTimeout(()=>{active.moveDown()}, 20);
+                    return;
+                }
             }
         }
         for(var i = 3; i >= 0; i--){
@@ -256,14 +271,13 @@ function play(){
             grid[this.block[i][0]*x+this.block[i][1]] = 255;
             grid[this.block[i][0]*x+this.block[i][1]-x] = 102;
         }
-        setTimeout(()=>{active.moveDown()}, 500);
+        setTimeout(()=>{active.moveDown()}, 20);
     }
 
     // Rotate functions
 
     return this;
 }
-
 
 var active = new play();
 
@@ -282,25 +296,32 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-setTimeout(()=>{active.moveDown()}, 300);
+setTimeout(()=>{active.moveDown()}, 20);
 
 function draw(){
-    for(var i = 0; i <= width/blockSize; i++){
-        line(i*blockSize, height, i*blockSize, 0);
-    }
-    for(var i = 0; i <= height/blockSize; i++){
-        line(0, i*blockSize, width, i*blockSize);
-    }
-    
-    for(var i = 0; i < (height/blockSize)*(width/blockSize); i++){
-        if(grid[i] == 102){
-            fill(102);
-            rect(blockSize*(i%x), blockSize*(Math.floor(i/x)), blockSize, blockSize);
+    if(!gameOver){
+        for(var i = 0; i <= width/blockSize; i++){
+            line(i*blockSize, height, i*blockSize, 0);
         }
-        else if(grid[i] == 255){
-            fill(255);
-            rect(blockSize*(i%x), blockSize*(Math.floor(i/x)), blockSize, blockSize);
+        for(var i = 0; i <= height/blockSize; i++){
+            line(0, i*blockSize, width, i*blockSize);
         }
+        
+        for(var i = 0; i < (height/blockSize)*(width/blockSize); i++){
+            if(grid[i] == 102){
+                fill(102);
+                rect(blockSize*(i%x), blockSize*(Math.floor(i/x)), blockSize, blockSize);
+            }
+            else if(grid[i] == 255){
+                fill(255);
+                rect(blockSize*(i%x), blockSize*(Math.floor(i/x)), blockSize, blockSize);
+            }
+        }
+    }else{
+        clear();
+        textSize(32);
+        textAlign(CENTER);
+        text('Game Over', 200, 100);
     }
 }
 
