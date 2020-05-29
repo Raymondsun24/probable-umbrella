@@ -261,7 +261,7 @@ function play(){
                     active = new play();
                     score += 1;
                     updateScore();
-                    setTimeout(()=>{active.moveDown()}, 20);
+                    setTimeout(()=>{active.moveDown()}, 300);
                     return;
                 }
             }
@@ -271,7 +271,7 @@ function play(){
             grid[this.block[i][0]*x+this.block[i][1]] = 255;
             grid[this.block[i][0]*x+this.block[i][1]-x] = 102;
         }
-        setTimeout(()=>{active.moveDown()}, 20);
+        setTimeout(()=>{active.moveDown()}, 300);
     }
 
     // Rotate functions
@@ -296,7 +296,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-setTimeout(()=>{active.moveDown()}, 20);
+setTimeout(()=>{active.moveDown()}, 300);
 
 function draw(){
     if(!gameOver){
