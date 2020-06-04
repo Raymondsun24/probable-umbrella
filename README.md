@@ -10,7 +10,7 @@ In my vue app:
 
 ## In this web app:
 ### Games
-- [ ] tetris game
+- [X] tetris game
 
 ### Visulization
 - [X] insertion sort
