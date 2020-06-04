@@ -5,17 +5,17 @@ Deployed on heroku: [Check it out here!](http://probabe-umbrella.herokuapp.com)
 
 ## Some ideas:
 In my vue app:
-[X] Sudoku
-[] Online Chat App
+- [X] Sudoku
+- [] Online Chat App
 
 ## In this web app:
 ### Games
-[X] tetris game
+- [] tetris game
 
 ### Visulization
-[X] insertion sort
-[] Merge Sort
-[] Bubble Sort
-[] Heap Sort
+- [X] insertion sort
+- [] Merge Sort
+- [] Bubble Sort
+- [] Heap Sort
 
 
