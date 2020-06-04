@@ -283,14 +283,17 @@ var active = new play();
 
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
+        event.preventDefault();
         active.moveLeft();
         console.log('Left was pressed');
     }
     if(event.keyCode == 39) {
+        event.preventDefault();
         active.moveRight();
         console.log('Right was pressed');
     }
     if(event.keyCode == 38){
+        event.preventDefault();
         active.rotate();
         console.log('Rotate pressed');
     }
