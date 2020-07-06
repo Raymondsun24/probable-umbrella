@@ -1,7 +1,7 @@
 # probable-umbrella
 Raymond's website
 
-Deployed on heroku: [Check it out here!](http://probabe-umbrella.herokuapp.com)
+Deployed on heroku: [Check it out here!](https://probable-umbrella-sun.herokuapp.com)
 
 ## Some ideas:
 In my vue app:
