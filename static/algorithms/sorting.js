@@ -2,7 +2,8 @@ const WIDTH = 600
 const HEIGHT = 600
 const k = 1000
 var date = new Date();
-var score = 0
+var score = 0;
+let f = selectionSort;
 
 function setup(){
     createCanvas(WIDTH, HEIGHT);
@@ -41,6 +42,45 @@ async function selectionSort(){
     }
 }
 
+
+async function mergeSort(arr, l ,r){
+    if(arr.length <= 1) return arr;
+    else{
+        let arrLeft = await mergeSort(arr.slice(0, Math.floor(arr.length/2)), l, l+Math.floor(arr.length/2)-1);
+        let arrRight  = await mergeSort(arr.slice(Math.floor(arr.length/2), arr.length), l+Math.floor(arr.length/2), r);
+        let merged = await merge(arrLeft, arrRight,l);
+        return merged;
+    }
+}
+
+async function merge(arrA, arrB, l){
+    if(arrB == undefined) return arrA;
+    let sizeA = arrA.length;
+    let sizeB = arrB.length;
+    let index1 = 0, index2 = 0;
+    let retVal = Array();
+    for(let i = 0; i < sizeA+sizeB; i++){
+        await new Promise(r => setTimeout(r,1));
+        if(index1 == sizeA){
+            data[l+i] = arrB[index2];
+            retVal.push(arrB[index2++]);
+        }
+        else if(index2 == sizeB){
+            data[l+i] = arrA[index1];
+            retVal.push(arrA[index1++]);
+        }
+        else if(arrA[index1] > arrB[index2]){
+            data[l+i] = arrB[index2];
+            retVal.push(arrB[index2++]);
+        }
+        else{
+            data[l+i] = arrA[index1];
+            retVal.push(arrA[index1++]);
+        }
+    }
+    return retVal;
+}
+
 function draw(){
     clear();
     background(220); 
@@ -50,20 +90,31 @@ function draw(){
     line(WIDTH, 0, WIDTH, HEIGHT);
     const W = WIDTH/k;
     for(var i = 0; i < k; i++){
-        if(data[i] <= 33) fill('green');
-        else if(data[i] < 67) fill('yellow');
-        else fill('red');
+        fill(100);
         noStroke();
         rect(i*W, WIDTH-(data[i]*WIDTH/100), W, (data[i]*HEIGHT/100));
     }
 }
 
 function start(){
-    selectionSort();
+    f();
 }
 
 function reset(){
     data = getData();
 }
 
-console.log(data)
+function mergeSortWrap(){
+    mergeSort(data, 0, k-1);
+}
+
+function openSort(sortMethod){
+    switch(sortMethod){
+        case 1:
+            f = selectionSort;
+            break;
+        case 2:
+            f = mergeSortWrap;
+            break;
+    }
+}
