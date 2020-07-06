@@ -14,6 +14,6 @@ In my vue app:
 
 ### Visulization
 - [X] insertion sort
-- [ ] Merge Sort
+- [X] Merge Sort
 - [ ] Bubble Sort
 - [ ] Heap Sort
